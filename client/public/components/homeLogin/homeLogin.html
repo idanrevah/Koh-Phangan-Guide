@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="homeLogin" >
+    </br>
+    </br></br>
+    </br></br>
+    </br>
+
+    <table style="width:100%">
+        <tr>
+            <th>
+                <center>
+                        <div class="MyfavoritePoints" ng-if="haveFav">  
+                            <h1>My last two favorits points</h1> 
+                            <div class="gallery" ng-click="getPoint(favoritePointA)" data-toggle="modal" data-target="#homeLoginModal">
+                                    <img ng-src="{{favoritePointA.url}}"  width="300" height="200">
+                                    <div class="descL">{{favoritePointA.POI_name}}</div>
+                                    
+                            </div>
+                            </br>
+                            </br>            
+                            <div class="gallery" ng-click="getPoint(favoritePointB)" data-toggle="modal" data-target="#homeLoginModal">
+                                    <img ng-src="{{favoritePointB.url}}" width="300" height="200">
+                                    <div class="descL">{{favoritePointB.POI_name}}</div>
+                            </div>
+                            </br>
+                            </br>
+                        </div>
+
+                        <div class="MyfavoritePoints" ng-if="!haveFav">  
+                                <h1>My last two favorits points</h1>
+                            <br><br><br><br>
+                                <p>
+                                        No favorite points to show
+                                </p>
+                        </div>
+                </center>
+                </br>
+                </br>
+                    
+            </th>
+            <th>
+                <center>
+
+                        <div class="MyfavoritePoints" >  
+                            <h1>My two reccomended points</h1> 
+                            <div class="gallery" ng-click="getPoint(recommedPointA)" data-toggle="modal" data-target="#homeLoginModal">
+                                    <img ng-src="{{recommedPointA.url}}"  width="300" height="200">
+                                    <div class="descL">{{recommedPointA.POI_name}}</div>
+                            </div>
+                            </br>
+                            </br>
+                    
+                            <div class="gallery" ng-click="getPoint(recommedPointB)" data-toggle="modal" data-target="#homeLoginModal">
+                                    <img ng-src="{{recommedPointB.url}}" width="300" height="200">
+                                    <div class="descL">{{recommedPointB.POI_name}}</div>
+                            </div>
+                            </br>
+                            </br>
+                        </div>
+                </center>
+            </br>
+            </br>
+               
+            </th> 
+        </tr>
+
+    </table>
+
+
+    
+<!-- Modal -->
+<div class="modal fade" id="homeLoginModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2>Point details</h2>
+            </div>
+              <div class="card">
+                      <img ng-src="{{currPointB.url}}" style="width:100%">
+                      <h1>{{currPointB.POI_name}}</h1>
+                      <div class="icon">    
+                          <p> <i class="fa fa-info-circle"></i> Description: {{currPointB.description}}</p>
+                          <p> <i class="fa fa-eye"></i> Number of views: {{currPointB.number_of_views}}</p>
+                          <p> <i class="fa fa-thumbs-o-up"></i> Rating(%): {{currPointB.rate}}</p>
+                          <p>Last reviews:</p>                             
+                          <p> <i class="fa fa-commenting-o"></i> 1. {{currPointB.review1}}</p>
+                          <p> Date Written: {{currPointB.dateOfReview1}}</p>
+                          <p> <i class="fa fa-commenting-o"></i> 2. {{currPointB.review2}}</p>
+                          <p> Date Written: {{currPointB.dateOfReview2}}</p>
+                      </div>
+                      
+                      
+                      </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+</div>
+
+
+
+</br>
+</br>   
+</div>
+    

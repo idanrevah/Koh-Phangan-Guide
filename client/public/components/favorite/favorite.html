@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="favorite">
+            
+        <div class="info">
+            <p>Sort Type: {{ sortType }}</p>
+            <p>Sort Reverse: {{ sortReverse }}</p>
+        </div>
+         
+        
+        
+        <table style="width:100%">
+            
+            <thead>
+            <tr>
+                <td>
+                <a ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                    ID 
+                    <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+                </td>
+
+                <td>
+                <a ng-click="sortType = 'PointName'; sortReverse = !sortReverse">
+                    Point Name 
+                    <span ng-show="sortType == 'PointName' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'PointName' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+                </td>
+                
+        
+                <td>
+                <a ng-click="sortType = 'order'; sortReverse = !sortReverse">
+                My Order 
+                    <span ng-show="sortType == 'order' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'order' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+                </td>
+        
+                <td>
+                <a>
+                    Favorite 
+                </a>
+                </td>
+        
+            </tr>
+            </thead>
+            
+            <tbody>
+            <tr ng-repeat="point in favorites | filter:searchPoint | orderBy:sortType:sortReverse" >
+                <td>{{ point.POIID }}</td>
+                <td><a  ng-click="getPoint(point)" data-toggle="modal" data-target="#myModal">{{ point.POI_name }} </a></td>
+                <td><input type="text" ng-change="changOrder(point)" ng-model="point.order" style="width: 35px"></td>
+                <td ng-click="delete(point)" ng-show="object.favoritBoll[point.POIID]"><a ><i class="fa fa-heart"></i></a></td>
+                <td ng-click="insert(point)" ng-show="!object.favoritBoll[point.POIID]"><a ><i class="fa fa-heart-o"></i></a></td>
+            </tr>
+            </tbody>
+            
+        </table>
+        </br>
+
+        <center>
+                <div class="saveBtn">          
+                        <a ng-click="saveFavorite()">Save my favorites</a>    
+                    </br>      
+                    </div>
+        </center>
+       
+        
+    </br>   
+
+      
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2>Point details</h2>
+              </div>
+                <div class="card">
+                        <img src="{{currPointB.url}}" style="width:100%">
+                        <h1>{{currPointB.PointName}}</h1>
+                        <div class="icon">    
+                            <p> <i class="fa fa-info-circle"></i> Description: {{currPointB.description}}</p>
+                            <p> <i class="fa fa-eye"></i> Number of views: {{currPointB.number_of_views}}</p>
+                            <p> <i class="fa fa-thumbs-o-up"></i> Rating(%): {{currPointB.rating}}</p>
+                            <p>Last reviews:</p>                             
+                            <p> <i class="fa fa-commenting-o"></i> 1. {{currPointB.review1}}</p>
+                            <p> Date Written: {{currPointB.dateOfReview1}}</p>
+                            <p> <i class="fa fa-commenting-o"></i> 2. {{currPointB.review2}}</p>
+                            <p> Date Written: {{currPointB.dateOfReview2}}</p>
+
+                            <br>
+                            <b>Your Review: </b>
+                            <br>
+                            <textarea ng-model="myReview" maxlength="500" rows="4" cols="50" placeholder="Please enter your review here"></textarea>
+                            <br>
+                            <b>Your Rank: </b>
+                            <br>
+                            <input type="number" ng-model="myRank">
+                            <br>
+                            <button ng-click="addReview()" id="addRank"> <i class="fa fa-edit"></i>Write a review</button>
+                        </div>
+
+
+                        
+                        </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+</div>
+        
+        

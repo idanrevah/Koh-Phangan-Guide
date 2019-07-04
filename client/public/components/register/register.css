@@ -1,0 +1,89 @@
+.register * {
+	box-sizing: border-box;
+    color: black;
+    font-family: Comic Sans MS, Helvetica, sans-serif;
+    text-decoration: none;
+    
+}
+
+/* The Modal (background) */
+.register {
+    left: 0;
+    width: 100%; /* Full width */
+    background-color: white;
+
+}
+
+/* Full-width input fields */
+
+.register input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    color: black;
+}
+
+/* Add a background color when the inputs get focus */
+.register input[type=text]:focus, input[type=password]:focus , input[type=email]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+.register select ,option{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    color: black;
+}
+
+.register select:focus ,  option:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Modal Content/Box */
+.register .register-content {
+    background-color: #48bad7;
+    margin: 2% auto 2% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 45%; /* Could be more or less, depending on screen size */
+    height: auto;
+    border: 10px solid #5b59c9;
+}
+
+/* Set a style for all buttons */
+#btnValidateSignUp {
+    background-color: #33e26e;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    text-align: center;
+    font-size: 20px;
+}
+
+#btnValidateSignUp:hover {
+    opacity:1;
+}
+
+
+/* Float cancel and signup buttons and add an equal width */
+#btnValidateSignUp {
+  float: left;
+  width: 100%;
+}
+
+/* Add padding to container elements */
+.register .container {
+    padding:0px 16px 16px 16px;
+}
+

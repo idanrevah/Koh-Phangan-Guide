@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+crossorigin=""/>
+
+
+<div class="allPoi">
+
+    
+<div class="info">
+    <p>Sort Type: {{sortType}}</p>
+    <p>Sort Reverse: {{sortReverse}}</p>
+    <p>Search Query: {{searchPoint}}</p>
+</div>
+
+<form>
+    <div class="search">
+        <i class="fa fa-search"></i>
+        <input type="text" class="myInput" placeholder="Search For Point Names.." ng-model="searchPoint">
+    </div>
+</form>
+
+<table style="width:100%">
+    
+    <thead>
+    <tr>
+        <td>
+        <a ng-click="sortType = 'POIID'; sortReverse = !sortReverse">
+            ID 
+            <span ng-show="sortType == 'POIID' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'POIID' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+        </td>
+
+        <td>
+        <a ng-click="sortType = 'PointName'; sortReverse = !sortReverse">
+            Point Name 
+            <span ng-show="sortType == 'PointName' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'PointName' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+        </td>
+
+
+        <td>
+        <a ng-click="sortType = 'category'; sortReverse = !sortReverse">
+        Category
+            <span ng-show="sortType == 'category' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'category' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+        <select ng-model="searchPoint">
+            <option value="">All</option>
+            <option ng-repeat="point in kohPhanganView | unique:'category'" value="{{point.category}}">{{point.category}}</option>
+        </select>    
+        </td>
+
+
+        <td>
+        <a ng-click="sortType = 'rate'; sortReverse = !sortReverse">
+        Rating (%) 
+            <span ng-show="sortType == 'rate' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'rate' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+        </td>
+
+        <td ng-if="isLoggedIn">
+        <a>
+            Favorite 
+        </a>
+        </td>
+
+    </tr>
+    </thead>
+    
+    <tbody>
+    <tr ng-repeat="point in kohPhanganView | filter:searchPoint | orderBy:sortType:sortReverse">
+        <td>{{ point.POIID }}</td>
+        <td><a  ng-click="getPoint(point)" data-toggle="modal" data-target="#allModal">{{ point.POI_name }} </a></td>
+        <td>{{ point.category }}</td>
+        <td>{{ point.rating }}</td>
+        <td ng-click="delete(point)" ng-show="{{isLoggedIn}} && object.favoritBoll[point.POIID]"><a ><i class="fa fa-heart"></i></a></td>
+        <td ng-click="insert(point)" ng-show="{{isLoggedIn}} && !object.favoritBoll[point.POIID]"><a ><i class="fa fa-heart-o"></i></a></td>
+    </tr>
+    </tbody>
+    
+</table>
+</br>
+
+
+<!-- MAP -->
+<center>
+        <h2>All Point In Map</h2>
+        <table class="mapTable">
+                <tr>
+                        <th>
+                        
+                                <div class="map">  
+                                        <div id="mapid">
+                                        </div>
+                                </div>
+                                               
+                        </th>
+                         
+                </tr>
+        </table>
+</center>
+
+</br>
+</br>
+
+<!-- Modal -->
+<div class="modal fade" id="allModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2>Point details</h2>
+            </div>
+              <div class="card">
+                      <img src="{{currPointB.url}}" style="width:100%">
+                      <h1>{{currPointB.POI_name}}</h1>
+                      <div class="icon">    
+                          <p> <i class="fa fa-info-circle"></i> Description: {{currPointB.description}}</p>
+                          <p> <i class="fa fa-eye"></i> Number of views: {{currPointB.number_of_views}}</p>
+                          <p> <i class="fa fa-thumbs-o-up"></i> Rating(%): {{currPointB.rating}}</p>
+                          <p>Last reviews:</p>                             
+                          <p> <i class="fa fa-commenting-o"></i> 1. {{currPointB.review1}}</p>
+                          <p> Date Written: {{currPointB.dateOfReview1}}</p>
+                          <p> <i class="fa fa-commenting-o"></i> 2. {{currPointB.review2}}</p>
+                          <p> Date Written: {{currPointB.dateOfReview2}}</p>
+
+                          <br>
+                          <b>Your Review: </b>
+                          <br>
+                          <textarea ng-model="myReview" maxlength="500" rows="4" cols="50" placeholder="Please enter your review here"></textarea>
+                          <br>
+                          <b>Your Rank: </b>
+                          <br>
+                          <input type="number" ng-model="myRank">
+                          <br>
+                          <button ng-click="addReview()" id="addRank"> <i class="fa fa-edit"></i>Write a review</button>
+                      </div>
+
+                      
+                      
+                      </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+</div>
+
+
+</div>
+

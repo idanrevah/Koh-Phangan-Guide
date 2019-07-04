@@ -1,0 +1,23 @@
+<br/><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="login" class="signUp">
+    <form class="signUp-content">
+      <div class="imgcontainer">
+        <img src="images/login2.png" alt="Avatar" class="avatar">
+      </div>
+      <div class="container">
+      <h1>Login</h1>
+      <p>Please fill in this form to login an account.</p>
+        <hr>
+
+        <input type="text" id="Lname" ng-model="user.username" placeholder="Enter Username" name="uname" title="Must contain a valid username" required autofocus >
+
+        <input type="password" id="Lpsw" ng-model="user.password" placeholder="Enter Password" name="psw" title="Must contain a correct password" required> 
+          <div class="clearfix">
+              <a  id="show_welcome2" class="cancelbtn" href="#/">Cancel</a>             
+              <a  id="btnValidateLogin" class="signupbtn" ng-click="login()">Login</a>
+              <a class="psw" href="#/passwordRestore">Forgot password?</a>       
+              
+          </div>
+      </div>
+    </form>
+  </div>

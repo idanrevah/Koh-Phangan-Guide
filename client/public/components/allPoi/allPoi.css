@@ -1,0 +1,123 @@
+
+.allPoi table{
+    border: 10px solid  #48bad7;
+
+}
+
+
+.allPoi td{
+    border: 5px solid #48bad7;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+
+}
+
+.allPoi thead{
+    background-color: #5b59c9;
+}
+
+
+
+.allPoi a{
+    color: black;
+    font-size: 20px;    
+    text-decoration: none;    
+}
+
+.allPoi{
+    font-family: Comic Sans MS, Helvetica, sans-serif; 
+}
+
+.allPoi h2 {
+    color: #48bad7;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Comic Sans MS, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.allPoi .info{
+    color:#5b59c9;
+    font-size: 20px;
+}
+
+
+
+.allPoi .search{
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    color: #48bad7;
+}
+
+.allPoi .search input[type=text] {
+    width: 230px;
+    box-sizing: border-box;
+    border: 3px solid  #5b59c9;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #48bad7;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    opacity: 0.9;
+}
+
+.allPoi .search input[type=text]:focus {
+    width: 80%;
+}
+
+
+.allPoi .search .myInput {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 20px;
+  border: 1px solid #5b59c9;
+  margin-bottom: 16px;
+  color: black;
+}
+
+
+
+.allPoi select {
+    width: 20%;
+    box-sizing: border-box;
+    border: 3px solid  #5b59c9;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #48bad7;
+    opacity: 0.9;
+}
+
+
+.allPoi h1 {
+    color: #5b59c9;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Comic Sans MS, Helvetica, sans-serif;
+    text-decoration: none;
+    text-align: center;
+}
+
+.allPoi .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto;
+    border: 3px solid #48bad7;
+    
+}
+
+.allPoi .mapTable{
+    border: 10px solid#48bad7;
+    width: 80%;
+}
+
+.allPoi .mapTable th{
+    border: 10px solid #5b59c9;
+
+}
+
+#mapid { height: 350px; }
+
+

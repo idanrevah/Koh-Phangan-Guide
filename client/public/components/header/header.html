@@ -1,0 +1,38 @@
+<header id="header" class="section clear edge" role="banner">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <nav class="main-navigation clear section" role="navigation">
+
+        <div id="menu-left">
+            <ul class="sm sm-simple">
+                <li><a class="active" href="#/" ng-if="!object.isLoggedIndex">Home</a></li>
+                <li><a class="active" href="#/homeLogin" ng-if="object.isLoggedIndex" >Home</a></li>
+                <li><a href="#/about">About</a></li>
+                <li><a href="#/allPoi">Attractions</a></li>
+            </ul>
+        </div>
+
+
+        <div id="menu-right">
+            <ul id="main-menu" class="sm sm-simple">
+                <li><a href="#/register" ng-if="!object.isLoggedIndex">Sign Up</a></li>
+                <li><a href="#/login" ng-if="!object.isLoggedIndex">Login</a></li>
+                <div class="icon-bar" style="display: inline-block">
+                    <li><a href="#/favorite"  ng-if="object.isLoggedIndex" style="display: inline-block"><i class="fa fa-heart"></i> Favorites</a></li>
+                    <li><a ng-click="signOut()" ng-if="object.isLoggedIndex" style="display: inline-block">Sign Out</a></li>
+                </div>
+                <span id="hello_guest">Hello {{object.userNameIndex}}</span>
+            </ul>
+        </div>
+
+
+        <div id="logo" >
+            <a href="#/">
+                <img width="150" height="70" src="http://www.kohphangan-tourism.com/racs2.png" alt="Main logo" />
+            </a>
+        </div>
+
+    </nav>
+
+</header>
+

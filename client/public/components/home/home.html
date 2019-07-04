@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+
+<div class="home" >
+
+        </br>
+    <h1>Welcome to our tour guide site!</h1>
+    <h1>Please Sign up or login to enjoy our site and attractions!</h1>
+        </br>
+        </br>
+        <a id="show_SignUp" href="#/register">Sign Up</a>
+        <a id="show_login" href="#/login">Login</a> 
+        </br>
+        </br>
+
+
+
+<h2>Popular in Koh-Phangan:</h2>
+        <table style="width:100%">
+        <tr>
+                <th>
+                <center>
+                        <div class="MyfavoritePoints">  
+                                <div class="gallery" id="img1" ng-click="setPoint(randomPoint[0])" data-toggle="modal" data-target="#homeModal">
+                                        <img ng-src="{{randomPoint[0].url}}"  width="300" height="200">
+                                                <div class="desc">{{randomPoint[0].POI_name}}</div>
+                                </div>
+                                                        
+                                <div class="gallery" id="img2" ng-click="setPoint(randomPoint[1])" data-toggle="modal" data-target="#homeModal">
+                                        <img ng-src="{{randomPoint[1].url}}"  width="300" height="200">
+                                                <div class="desc">{{randomPoint[1].POI_name}}</div>
+                                </div>
+                                                        
+                                <div class="gallery" id="img3" ng-click="setPoint(randomPoint[2])" data-toggle="modal" data-target="#homeModal">
+                                        <img ng-src="{{randomPoint[2].url}}"  width="300" height="200">
+                                                <div class="desc">{{randomPoint[2].POI_name}}</div>
+                                </div>
+                        </div>
+                </center>
+                </th>
+        </tr>
+        </table>
+
+
+    
+        <!-- Modal -->
+        <div class="modal fade" id="homeModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h2>Point details</h2>
+                    </div>
+                      <div class="card">
+                              <img ng-src={{currPointB.url}} style="width:100%">
+                              <h1>{{currPointB.POI_name}}</h1>
+                              <div class="icon">
+                                  <p> <i class="fa fa-info-circle"></i> Category: {{currPointB.category}}</p>
+                                  <p> <i class="fa fa-info-circle"></i> Description: {{currPointB.description}}</p>
+                                  <p> <i class="fa fa-eye"></i> Number of views: {{currPointB.number_of_views}}</p>
+                                  <p> <i class="fa fa-thumbs-o-up"></i> Rating(%): {{currPointB.rating}}</p>
+                                  <p>Last reviews:</p>                             
+                                  <p> <i class="fa fa-commenting-o"></i> 1. {{currPointB.Review1}}</p>                   
+                                  <p> Date Written: {{currPointB.DateOfReview1}}</p>   
+                                  <p> <i class="fa fa-commenting-o"></i> 2. {{currPointB.Review2}}</p> 
+                                  <p> Date Written: {{currPointB.DateOfReview2}}</p>    
+                              </div>
+                              
+                              
+                              </div>
+                    
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  
+                </div>
+        </div>
+
+
+</div>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
